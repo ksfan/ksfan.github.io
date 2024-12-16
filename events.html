@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bright Spectrum Academy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="https://brightspectrum.ca" />
+    <link rel="icon" href="favicon.png" type="image/png"> <!-- For .png files -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="css/jcarousel.css" rel="stylesheet" />
+    <link href="css/flexslider.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        body {
+          padding: 20px;
+        }
+        .side-menu {
+          list-style-type: none;
+          padding-left: 0;
+          background-color: #FF2F92;
+          text-align: center;
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          padding: 20px 0;
+          max-width: 220px;
+        }
+        .side-menu li {
+          margin: 10px 0;
+        }
+        .side-menu a {
+          text-decoration: none;
+          color: rgb(166, 166, 166);
+          font-size: 18px;
+          font-weight: bold;
+          text-decoration: underline;
+        }
+        .side-menu li.active a {
+            color: white;
+        }
+        .side-menu a:hover {
+          color: #007bff;
+          text-decoration: underline;
+        }
+        .section {
+          display: none; /* Initially hide all sections */
+        }
+        .section.active {
+          display: block; /* Show the active section */
+          color: black;
+        }
+        .col-xs-4 {
+            width: 25%;
+        }
+        .section.active > p{
+            margin: 0;
+        }
+
+        .item-container {
+            max-width: 600px; /* Limit the width */
+            margin: 0;
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 50px;
+        }
+
+        .btn-title {
+            flex-grow: 1;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #FF2F92;
+            border-radius: 15px; /* Custom rounded corners */
+            padding: 10px 20px;  /* Padding for a larger button look */
+            height: 75px;
+            word-wrap: break-word;
+            text-wrap: auto;
+        }
+
+        .link-details {
+            white-space: nowrap; /* Keeps the link text on one line */
+            margin-left: 10px;
+            color: #FF2F92;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) and (max-width: 979px) {
+        }
+        @media (max-width: 767px) {
+          .col-xs-4, .col-xs-8 {
+            width: 100%;
+          }
+          .side-menu {
+            text-align: center;
+          }
+        }   
+
+        @media (max-width: 480px) {
+            .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .btn-title {
+            flex-grow: 1;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #FF2F92;
+            border-radius: 5px; /* Custom rounded corners */
+            padding: 5px 10px;  /* Padding for a larger button look */
+            height: 40px;
+            word-wrap: break-word;
+            text-wrap: auto;
+        }
+
+        .link-details {
+            white-space: nowrap; /* Keeps the link text on one line */
+            margin-left: 10px;
+            color: #FF2F92;
+            font-size: 12px;
+            font-weight: bold;
+        }
+            
+        }
+    </style>
+    
+    </head>
+    
+    <body>
+        <div id="wrapper">
+            <!-- start header -->
+        <header>
+            <div class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div>
+                            <h1>Bright Spectrum Academy</h1>
+                        </div>
+                        <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo" /></a>
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="about.html">About</a></li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li id="dropdown-circle"><a href="#circle" onclick="showSection('circle')">π Circle</a></li>
+                                    <li id="dropdown-reading"><a href="#reading" onclick="showSection('reading')">Reading Club</a></li>
+                                    <li id="dropdown-social"><a href="#social" onclick="showSection('social')">Social Events</a></li>
+                                    <li id="dropdown-sports"><a href="#sports" onclick="showSection('sports')">Sports Spirit Festival</a></li>
+                                    <li id="dropdown-musics"><a href="#musics" onclick="showSection('musics')">Music Showcase</a></li>
+                                    <li id="dropdown-lens"><a href="#lens" onclick="showSection('lens')">An Expanded Lens</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Academics <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li id="dropdown-math"><a href="academics.html#math" onclick="showSection('math')">Math</a></li>
+                                    <li id="dropdown-english"><a href="academics.html#english" onclick="showSection('english')">English Language Arts</a></li>
+                                    <li id="dropdown-speech"><a href="academics.html#speech" onclick="showSection('speech')">Speech & Writing</a></li>
+                                    <li id="dropdown-partner"><a href="academics.html#partner" onclick="showSection('partner')">Partner Programs</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Summer Camp <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="camp.html" style="color: white">2025 Summer Camp (5-7) </a></li>
+                                    <li><a href="camp.html" style="color: white">2025 Summer Camp (7-12) </a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Careers & Volunteer <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="career.html" style="color: white">Apply for Teachers </a></li>
+                                    <li><a href="career.html" style="color: white">Apply for Volunteers </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header><!-- end header -->
+        <div class="container">
+            <div class="row">
+                <!-- Left Menu -->
+                <div class="col-xs-4">
+                    <ul class="side-menu">
+                        <li id="side-circle"><a href="#circle" onclick="showSection('circle')">π Circle</a></li>
+                        <li id="side-reading"><a href="#reading" onclick="showSection('reading')">Reading Club</a></li>
+                        <li id="side-social"><a href="#social" onclick="showSection('social')">Social Events</a></li>
+                        <li id="side-sports"><a href="#sports" onclick="showSection('sports')">Sports Spirit Festival</a></li>
+                        <li id="side-musics"><a href="#musics" onclick="showSection('musics')">Music Showcase</a></li>
+                        <li id="side-lens"><a href="#lens" onclick="showSection('lens')">An Expanded Lens</a></li>
+                    </ul>
+                </div>
+
+                <!-- Right Content Sections -->
+                <div class="col-xs-8 col-sm-9">
+                    <div id="circle" class="section active">
+                        <h2>π Circle</h2>
+                        <p>π-Circle is a Math Club for students, it is an engaging and fun experience that sparks curiosity and fosters a love for learning. </p>
+                        <br>
+                        <p>Objective: Making math enjoyable, developing problem-solving skills, and encouraging creativity with numbers.</p>
+                        <p>Target Audience: Cater activities to the appropriate age group Grades 1–8.</p>
+                        <p>Goals: Focus on developing critical thinking, teamwork, and confidence in math.</p>
+                        <br>
+                        <p>Now, give you some examples of our structure activities to be playful and hands-on:</p>
+                        <p>Math Games: Use puzzles, card games, and board games that incorporate math concepts.</p>
+                        <p>STEM Activities: Integrate math with simple science or engineering tasks, like building shapes with marshmallows and toothpicks.</p>
+                        <p>Problem-Solving Challenges: Host friendly competitions with riddles or logic puzzles.</p>
+                        <p>Real-Life Math: Show how math is used in everyday life through activities like measuring ingredients for a recipe or budgeting for a mock store.</p>
+                        <br>
+                        <p>π-Circle emphasizes participation over competition to make it accessible for all skill levels.</p>
+                        <br>
+                        <p>Hello, everyone! Are you ready to become π-Circle? Our new math club is all about having fun with numbers, solving puzzles, and discovering how amazing math can be! Whether you love math or just want to try something new, this is the club for you. Join us to play games, win prizes, and explore the magic of math!</p>
+                        <br>
+                        <p>Time: Saturday 5:00-5:40pm, $12/Kid</p>
+                        <p>π-Circle Format: Richmond Hill Library/Richmond Hill P.S./Online</p>
+                        <p>π-Circle Information: Email will be send before class open 1-2weeks after registed</p>
+                    </div>
+                    <div id="reading" class="section">
+                        <h2>Reading Club</h2>
+                        <p>Bookworms Unite is an exciting reading club, and also it's a perfect way to foster a love for students' reading, improve literacy skills, and create a fun and interactive environment. </p>
+                        <br>
+                        <p>Objectives of Bookworms Unite: improve reading skills, encourage reading for pleasure, and introduce diverse genres.  Skills Focus on Specify if the focus will be on vocabulary building, comprehension, fluency, or simply enjoying stories.</p>
+                        <p>Every week Bookworms Unite will create an Engaging Theme</p>
+                        <p>Choose a fun, appealing theme that resonates with children. For example Adventure Stories, Fairy Tales and Fantasy, Animals and Nature, Superheroes, Detective Mysteries</p>
+                        <p>The theme will vary monthly or seasonally.</p>
+                        <p>Bookworms will select Age-Appropriate Reading Materials, consider:</p>
+                        <p>Picture Books for younger primary students. Chapter Books for slightly older students. Interactive Books with puzzles or activities. Choose a mix of fiction, non-fiction, and visual media (e.g., comic books or illustrated texts).</p>
+                        <br>
+                        <p>By creating a structured, engaging, and supportive environment, the Bookworms Unit can make reading enjoyable and educational for primary students.</p>
+                        <br>
+                        <p>Time: Sunday 6:00-7:00pm, $12/Kid</p>
+                        <p>-Circle Format: Richmond Hill Library/Richmond Hill P.S./Online</p>
+                        <p>π-Circle Information: Email will be send before class open 1-2weeks after registed</p>
+                    </div>
+                    <div id="social" class="section">
+                        <h2>Social Events</h2>
+                        <div class="container mt-4">
+                            <div class="list-group item-container">
+
+                                <div class="list-item">
+                                    <button class="btn btn-primary btn-title">
+                                        Climate Change Awareness and Action
+                                    </button>
+                                    <a href="#" class="link-details">View details</a>
+                                </div>
+                                <div class="list-item">
+                                    <button class="btn btn-primary btn-title">
+                                        Farm-to-Table
+                                    </button>
+                                    <a href="#" class="link-details">View details</a>
+                                </div>
+                                <div class="list-item">
+                                    <button class="btn btn-primary btn-title">
+                                        Medical Treatment and Health in Crisis Situations
+                                    </button>
+                                    <a href="#" class="link-details">View details</a>
+                                </div>
+                                <div class="list-item">
+                                    <button class="btn btn-primary btn-title">
+                                        Water Resources Sustainability Event
+                                    </button>
+                                    <a href="#" class="link-details">View details</a>
+                                </div>
+                                <div class="list-item">
+                                    <button class="btn btn-primary btn-title">
+                                        Sustainable Diet and Food Security Forum
+                                    </button>
+                                    <a href="#" class="link-details">View details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sports" class="section">
+                        <h2>Sports Spirit Festival</h2>
+                        <p>Experience the energy and excitement of our Sports Spirit Festival.</p>
+                    </div>
+                    <div id="musics" class="section">
+                        <h2>Music Showcase</h2>
+                        <p>This is music showcase.</p>
+                    </div>
+                    <div id="lens" class="section">
+                        <h2>An Expanded Lens</h2>
+                        <p>Broaden your perspective through insightful programs and workshops.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+            </div>
+            <div id="sub-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="copyright">
+                                <p>
+                                    <span>&copy; Bright Spectrum Academy 2025 All right reserved.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="social-network">
+                                <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                </li>
+                                <li><a href="#" data-placement="top" title="Pinterest"><i
+                                            class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#" data-placement="top" title="Google plus"><i
+                                            class="fa fa-google-plus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+    <!-- javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/jquery.fancybox-media.js"></script>
+    <script src="js/portfolio/jquery.quicksand.js"></script>
+    <script src="js/portfolio/setting.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>

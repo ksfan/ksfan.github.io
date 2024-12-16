@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Bright Spectrum Academy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="https://brightspectrum.ca" />
+	<link rel="icon" href="favicon.png" type="image/png"> <!-- For .png files -->
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+	<link href="css/jcarousel.css" rel="stylesheet" />
+	<link href="css/flexslider.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<style>
+		body {
+			padding: 20px;
+		}
+
+		.side-menu {
+			list-style-type: none;
+			padding-left: 0;
+			background-color: #D5FC79;
+			text-align: center;
+			font-family: 'Comic Sans MS', cursive, sans-serif;
+			padding: 20px 0;
+			max-width: 220px;
+		}
+
+		.side-menu li {
+			margin: 10px 0;
+		}
+
+		.side-menu a {
+			text-decoration: none;
+			color: rgb(166, 166, 166);
+			font-size: 18px;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+
+		.side-menu li.active a {
+			color: white;
+		}
+
+		.side-menu a:hover {
+			color: #007bff;
+			text-decoration: underline;
+		}
+
+		.section {
+			display: none;
+			/* Initially hide all sections */
+		}
+
+		.section.active {
+			display: block;
+			/* Show the active section */
+			color: black;
+		}
+
+		.col-xs-4 {
+			width: 25%;
+		}
+
+		.section.active>p {
+			margin: 0;
+		}
+
+		.item-container {
+			max-width: 600px;
+			/* Limit the width */
+			margin: 0;
+		}
+
+		.list-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 15px;
+			gap: 50px;
+		}
+
+		.btn-title {
+			flex-grow: 1;
+			font-size: 18px;
+			font-weight: bold;
+			background-color: #D5FC79;
+			border-radius: 15px;
+			/* Custom rounded corners */
+			padding: 10px 20px;
+			/* Padding for a larger button look */
+			height: 75px;
+			word-wrap: break-word;
+			text-wrap: auto;
+		}
+
+		.link-details {
+			white-space: nowrap;
+			/* Keeps the link text on one line */
+			margin-left: 10px;
+			color: #D5FC79;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.first-level-numbered-list {
+		    list-style-type: decimal; 
+		}
+
+		.numbered-list {
+		    list-style-type: none; 
+			counter-reset: list-counter;
+		}
+
+		.numbered-list li {
+		    margin-bottom: 10px; /* Add spacing between items (optional) */
+		}
+
+		.numbered-list li::before {
+		    content: "(" counter(list-counter) ") "; /* Add the number with parentheses */
+		    counter-increment: list-counter; /* Increment the counter for each li */
+		}
+
+		/* Responsive adjustments */
+		@media (min-width: 768px) and (max-width: 979px) {}
+
+		@media (max-width: 767px) {
+
+			.col-xs-4,
+			.col-xs-8 {
+				width: 100%;
+			}
+			.col-xs-4,
+			.col-xs-9 {
+				width: 100%;
+			}
+
+			.side-menu {
+				text-align: center;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.list-item {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 15px;
+				gap: 10px;
+			}
+
+			.btn-title {
+				flex-grow: 1;
+				font-size: 12px;
+				font-weight: bold;
+				background-color: #FF2F92;
+				border-radius: 5px;
+				/* Custom rounded corners */
+				padding: 5px 10px;
+				/* Padding for a larger button look */
+				height: 40px;
+				word-wrap: break-word;
+				text-wrap: auto;
+			}
+
+			.link-details {
+				white-space: nowrap;
+				/* Keeps the link text on one line */
+				margin-left: 10px;
+				color: #FF2F92;
+				font-size: 12px;
+				font-weight: bold;
+			}
+
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="wrapper">
+		<!-- start header -->
+		<header>
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div>
+							<h1>Bright Spectrum Academy</h1>
+						</div>
+						<a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo" /></a>
+					</div>
+					<div class="navbar-collapse collapse ">
+						<ul class="nav navbar-nav">
+							<li><a href="index.html">Home</a></li>
+							<li class="active"><a href="about.html">About</a></li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li id="dropdown-circle"><a href="events.html#circle" onclick="showSection('circle')">π Circle</a></li>
+                                    <li id="dropdown-reading"><a href="events.html#reading" onclick="showSection('reading')">Reading Club</a></li>
+                                    <li id="dropdown-social"><a href="events.html#social" onclick="showSection('social')">Social Events</a></li>
+                                    <li id="dropdown-sports"><a href="events.html#sports" onclick="showSection('sports')">Sports Spirit Festival</a></li>
+                                    <li id="dropdown-musics"><a href="events.html#musics" onclick="showSection('musics')">Music Showcase</a></li>
+                                    <li id="dropdown-lens"><a href="events.html#lens" onclick="showSection('lens')">An Expanded Lens</a></li>
+                                </ul>
+                            </li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Academics <b
+										class="caret"></b></a>
+								<ul class="dropdown-menu">
+                                    <li id="dropdown-math"><a href="#math" onclick="showSection('math')">Math</a></li>
+                                    <li id="dropdown-english"><a href="#english" onclick="showSection('english')">English Language Arts</a></li>
+                                    <li id="dropdown-speech"><a href="#speech" onclick="showSection('speech')">Speech & Writing</a></li>
+                                    <li id="dropdown-partner"><a href="#partner" onclick="showSection('partner')">Partner Programs</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Summer Camp <b
+										class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="camp.html" style="color: white">2025 Summer Camp (5-7) </a></li>
+									<li><a href="camp.html" style="color: white">2025 Summer Camp (7-12) </a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Careers & Volunteer <b
+										class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="career.html" style="color: white">Apply for Teachers </a></li>
+									<li><a href="career.html" style="color: white">Apply for Volunteers </a></li>
+								</ul>
+							</li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header><!-- end header -->
+        <!--div id="academics-container" class="container" style="background-image: url('img/slides/1.jpg');"-->
+        <div id="academics-container" class="container">
+			<div class="row">
+				<!-- Left Menu -->
+				<div class="col-xs-4">
+					<ul class="side-menu">
+						<li id="side-math"><a href="#math" onclick="showSection('math')">Math</a></li>
+						<li id="side-english"><a href="#english" onclick="showSection('english')">English Language Arts</a></li>
+						<li id="side-speech"><a href="#speech" onclick="showSection('speech')">Speech & Writing</a></li>
+						<li id="side-partner"><a href="#partner" onclick="showSection('partner')">Partner Programs</a></li>
+					</ul>
+				</div>
+
+				<!-- Right Content Sections -->
+                <div class="col-xs-9 col-sm-9">
+					<div id="math" class="section active" style="background-image: url('img/slides/3_background.jpg'); padding: 10px;">
+						<p> Welcome to Brain Bright <b>Math Program</b>
+								This is a dynamic learning environment designed to help students explore, understand, and master the exciting world of mathematics. Our mission is to provide an engaging and comprehensive educational experience, fostering critical thinking and problem-solving skills for learners of all levels.
+						</p>
+				
+						<!-- Unique Features -->
+						<div>
+							<h2>What Makes Math Academy Unique?</h2>
+							<div class="feature-item">
+								<h3>1. Comprehensive Curriculum</h3>
+								<p>
+									Math Academy covers a wide range of topics, from basic arithmetic and geometry to advanced subjects like calculus, linear algebra, and applied statistics. The curriculum is designed to meet the needs of learners at every stage.
+								</p>
+							</div>
+							<div class="feature-item">
+								<h3>2. Interactive Learning</h3>
+								<p>
+									Our platform includes interactive lessons, video tutorials, quizzes, and real-world problem-solving exercises to reinforce concepts and build confidence.
+								</p>
+							</div>
+							<div class="feature-item">
+								<h3>3. Personalized Education</h3>
+								<p>
+									We offer adaptive learning paths tailored to individual needs, ensuring every student progresses at their own pace.
+								</p>
+							</div>
+							<div class="feature-item">
+								<h3>4. Expert Guidance</h3>
+								<p>
+									Learn from experienced instructors and mathematicians who provide clear explanations and practical applications of mathematical theories.
+								</p>
+							</div>
+							<div class="feature-item">
+								<h3>5. Community Engagement</h3>
+								<p>
+									Join a vibrant community of learners, participate in forums, and collaborate on challenging math problems to enhance your understanding.
+								</p>
+							</div>
+						</div>
+				
+						<!-- Who Can Benefit -->
+						<div>
+							<h2>Who Can Benefit?</h2>
+							<ul>
+								<li><strong>Students:</strong> From elementary school through college, Math Academy supports all levels of education.</li>
+								<li><strong>Professionals:</strong> Those looking to strengthen their analytical skills or prepare for certifications.</li>
+								<li><strong>Math Enthusiasts:</strong> Anyone with a passion for mathematics eager to explore and grow.</li>
+							</ul>
+						</div>
+				
+						<!-- Closing Statement -->
+						<div>
+							<p>
+								Whether you're starting your journey in mathematics or aiming to deepen your expertise, Math Academy offers tools, resources, and support to help you succeed. Let’s make math not just a subject but a skill for life!
+							</p>
+						</div>
+					</div>
+					<div id="english" class="section">
+						<p>The English Language Arts (ELA) program for primary school is a foundational curriculum designed to nurture young learners' communication skills, creativity, and critical thinking. It provides students with the tools to become proficient readers, effective writers, confident speakers, and active listeners. By integrating literature, grammar, vocabulary, and interactive activities, the program aims to inspire a lifelong love for language and learning.
+						<!-- Key Objectives -->
+						<div>
+							<h2>Key Objectives</h2>
+							<div class="feature-item">
+								<h3>1. Reading Skills Development</h3>
+								<ul class="numbered-list">
+									<li>Foster a love for reading through age-appropriate, diverse texts.</li>
+									<li>Teach foundational skills such as phonics, word recognition, and fluency.</li>
+									<li>Develop comprehension strategies to interpret and analyze text.</li>
+								</ul>
+							</div>
+							<div class="feature-item">
+								<h3>2. Writing Proficiency</h3>
+								<ul class="numbered-list">
+									<li>Introduce structured writing processes: planning, drafting, revising, and publishing.</li>
+									<li>Focus on sentence construction, punctuation, and spelling.</li>
+									<li>Encourage creativity through narrative, informational, and persuasive writing.</li>
+								</ul>
+							</div>
+							<div class="feature-item">
+								<h3>3. Speaking and Listening</h3>
+								<ul class="numbered-list">
+									<li>Build oral communication skills through discussions, storytelling, and presentations.</li>
+									<li>Promote active listening and the ability to respond thoughtfully.</li>
+									<li>Encourage collaboration and respect for others’ ideas.</li>
+								</ul>
+							</div>
+							<div class="feature-item">
+								<h3>4. Language and Vocabulary</h3>
+								<ul class="numbered-list">
+									<li>Expand vocabulary through reading, context clues, and word exploration.</li>
+									<li>Introduce grammar concepts in an engaging and age-appropriate manner.</li>
+									<li>Reinforce the relationship between spoken and written language.</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Core Components -->
+						<div>
+							<h2>Core Components</h2>
+							<ul class="core-components-list">
+								<li><strong>Interactive Storytime:</strong> Students engage with stories that align with their interests and cultural backgrounds.</li>
+								<li><strong>Phonics and Word Study:</strong> Systematic instruction to build decoding and spelling skills.</li>
+								<li><strong>Literature Exploration:</strong> Exposure to classic, contemporary, and multicultural texts to broaden perspectives.</li>
+								<li><strong>Hands-On Activities:</strong> Games, group projects, and art integration to make learning dynamic and enjoyable.</li>
+							</ul>
+						</div>
+						
+						<!-- Benefits of the Program -->
+						<div>
+							<h2>Benefits of the Program</h2>
+							<ul class="benefits-list">
+								<li>Builds confidence in communication across all forms.</li>
+								<li>Encourages critical thinking and problem-solving through discussion and writing.</li>
+								<li>Fosters creativity and self-expression.</li>
+								<li>Prepares students for advanced literacy and academic success.</li>
+							</ul>
+						</div>
+						
+						<!-- Closing Statement -->
+						<div>
+							<p>
+								By integrating language arts skills into everyday learning, the primary school ELA program equips students with essential tools to navigate the world with confidence, empathy, and curiosity.
+							</p>
+						</div>
+					</div>
+					<div id="speech" class="section">
+						<p>The <b>Speech & Writing Program</b> is designed to equip primary school students with essential communication and writing skills, fostering creativity, confidence, and critical thinking from an early age. This program integrates interactive activities, age-appropriate lessons, and a supportive environment to nurture students' abilities in both verbal and written expression.</p>
+
+						<h3>Goals of the Program</h3>
+						<ul>
+							<li>Enhance Verbal Communication Skills: Develop clear, confident, and effective speech in diverse settings.</li>
+							<li>Strengthen Writing Fundamentals: Build foundational skills in grammar, sentence structure, and storytelling.</li>
+							<li>Boost Confidence: Encourage self-expression and improve self-esteem through public speaking and creative writing.</li>
+							<li>Encourage Creativity: Cultivate imagination and original thinking in speech and writing tasks.</li>
+							<li>Develop Critical Thinking: Enable students to organize their thoughts and express them logically.</li>
+						</ul>
+						
+						<h3>Program Structure</h3>
+						<ul class="first-level-numbered-list">
+							<li><strong>Weekly Themes</strong> Each week focuses on a theme (e.g., family, nature, dreams) to provide context for speech and writing tasks.</li>
+							<li><strong>Daily Activities</strong>
+								<ul>
+									<li><strong>STEP 1: Listening and Discussion</strong> Interactive storytelling or audio lessons followed by group discussions.</li>
+									<li><strong>STEP 2: Speech Practice</strong> Short speeches, show-and-tell, or recitations to practice verbal skills.</li>
+									<li><strong>STEP 3: Writing Fundamentals</strong> Guided lessons on vocabulary, grammar, and constructing sentences.</li>
+									<li><strong>STEP 4: Creative Writing</strong> Journaling, story-building, or composing poems based on weekly themes.</li>
+									<li><strong>STEP 5: Presentation Day</strong> Students present their speech or share their written work with peers for feedback.</li>
+								</ul>
+							</li>
+							<li><strong>Assessment</strong>
+								<ul class="numbered-list">
+									<li>Progress measured through participation, creativity, and clarity in speech and writing.</li>
+									<li>Feedback given to encourage growth and celebrate achievements.</li>
+								</ul>
+							</li>
+						</ul>
+						
+						<h3>Key Features</h3>
+						<ul class="first-level-numbered-list">
+							<li><strong>Interactive Learning Tools</strong> Incorporates multimedia, role-play, and games to make learning engaging.</li>
+							<li><strong>Personalized Attention</strong> Activities tailored to suit varying levels of ability, ensuring every child progresses at their pace.</li>
+							<li><strong>Parental Involvement</strong> Weekly take-home activities to involve parents in their child’s learning journey.</li>
+							<li><strong>Celebration of Milestones</strong> Hosting events like a “Young Authors’ Day” or “Speech Fest” to showcase students' talents.</li>
+						</ul>
+						
+						<h3>Benefits</h3>
+						<ul>
+							<li>Improves articulation and confidence in public speaking.</li>
+							<li>Fosters a love for writing and storytelling.</li>
+							<li>Strengthens academic performance in language arts.</li>
+							<li>Builds a lifelong foundation for effective communication skills.</li>
+						</ul>
+					</div>
+					<div id="partner" class="section">
+						<div class="container2" style="background-color: #FBE5D6; border-radius: 10%;">
+							<div class="section-header" style="text-align: center; padding-top: 10px;">
+								<h3 style="margin: 5px 0;">Math </h3>
+								<h3 style="margin: 5px 0;">Spring 2025 In-person Classes*</h3>
+								<h3 style="margin: 5px 0;">Mar 14th – Jun 20th, 2025 </h3>
+							</div>
+				
+							<div class="row">
+								<div class="features">
+									<div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms">
+										<div class="media service-box">
+											<!-- div class="pull-left">
+												<i class="fa fa-bullseye"></i>
+											</div -->
+											<div class="media-body">
+												<h4 class="media-heading" style="background-color: #1CF3C1;display: inline;">Area: Aurora</h4>
+												<h4 class="media-heading" style="color: red">πM-AA （Level 2-Level 3）:</h4>
+												<h4 class="media-heading" style="font-weight: 400">Thursday : 6:00-7:05pm</h4>
+												<h4 class="media-heading" style="font-weight: 400;">Instructor: Peter K.</h4>
+												<h4 class="media-heading">Tuition: $325 (13 Lessons)</h4>
+												<h4 class="media-heading">Location: Aurora Height P.S. </h4>
+												<br>
+												<h4 class="media-heading" style="color: red">πM-AB （Level 4-Level 5）:</h4>
+												<h4 class="media-heading" style="font-weight: 400">Thursday: 7:15-8:30pm </h4>
+												<h4 class="media-heading" style="font-weight: 400;">Instructor: Arthur</h4>
+												<h4 class="media-heading">Tuition: $395 (13 Lessons)</h4>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">
+										<div class="media service-box">
+											<!-- div class="pull-left">
+												<i class="fa fa-compass"></i>
+											</div-->
+											<div class="media-body">
+												<h4 class="media-heading" style="background-color: #1CF3C1; display: inline;">Area: Richmond Hill</h4>
+												<h4 class="media-heading" style="color: red">πM-RA （Level 5-Level 6）:</h4>
+												<h4 class="media-heading" style="font-weight: 400">Monday: 6:00-7:05pm</h4>
+												<h4 class="media-heading" style="font-weight: 400;">Instructor: Arthur</h4>
+												<h4 class="media-heading">Tuition: $325 (13 Lessons)</h4>
+												<h4 class="media-heading">Location: Richmond Hill Beynon Fields P.S. </h4>
+												<br>
+												<h4 class="media-heading" style="color: red">πM-RB （Level 4-Level 5）:</h4>
+												<h4 class="media-heading" style="font-weight: 400">Monday: 7:15-8:30pm</h4>
+												<h4 class="media-heading" style="font-weight: 400;">Instructor: Arthur</h4>
+												<h4 class="media-heading">Tuition: $325 (13 Lessons)</h4>
+												<h4 class="media-heading">Location: Richmond Hill Beynon Fields P.S. </h4>
+											</div>
+										</div>
+									</div>
+				
+									<div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms" style="margin-top: -100px">
+										<div class="media service-box">
+											<!--div class="pull-left">
+												<i class="fa fa-database"></i>
+											</div-->
+											<div class="media-body">
+												<h4 class="media-heading" style="background-color: #1CF3C1;display: inline;">Area: Markham</h4>
+												<h4 class="media-heading" style="color: red">πM-AA （Level 4-Level 5）:</h4>
+												<h4 class="media-heading" style="font-weight: 400">Sunday : 6:00-7:05pm</h4>
+												<h4 class="media-heading" style="font-weight: 400;">Instructor: Arthur</h4>
+												<h4 class="media-heading">Tuition: $325 (13 Lessons)</h4>
+												<h4 class="media-heading">Location: Markham P.S. </h4>
+												<br>
+												<h4 class="media-heading" style="color: red">πM-MB （Level 5-Level 6）:</h4>
+												<h4 class="media-heading" style="font-weight: 400">Thursday, Section B: 7:05-8:35pm </h4>
+												<h4 class="media-heading" style="font-weight: 400;">Instructor: Peter K</h4>
+												<h4 class="media-heading">Tuition: $395 (13 Lessons)</h4>
+											</div>
+										</div>
+									</div>
+							</div><!--/.row-->    
+						</div><!--/.container-->
+						<div style="text-align: center; padding-bottom: 10px;"><p>*Subject to change </p></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<footer>
+			<div class="container">
+			</div>
+			<div id="sub-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="copyright">
+								<p>
+									<span>&copy; Bright Spectrum Academy 2025 All right reserved.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<ul class="social-network">
+								<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+								</li>
+								<li><a href="#" data-placement="top" title="Pinterest"><i
+											class="fa fa-pinterest"></i></a></li>
+								<li><a href="#" data-placement="top" title="Google plus"><i
+											class="fa fa-google-plus"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	<!-- javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/jquery.fancybox-media.js"></script>
+	<script src="js/portfolio/jquery.quicksand.js"></script>
+	<script src="js/portfolio/setting.js"></script>
+	<script src="js/jquery.flexslider.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/menu.js"></script>
+</body>
+
+</html>
